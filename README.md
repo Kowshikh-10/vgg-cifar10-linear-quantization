@@ -106,6 +106,46 @@ INT8 Model
         ↓
 Performance Evaluation
 ```
+## Experimental Results
+
+### FP32 Baseline
+
+The original VGG model was evaluated using floating-point (FP32) weights and activations.
+
+| Metric     | Value      |
+| ---------- | ---------- |
+| Accuracy   | 92.95%     |
+| Model Size | 281.63 MiB |
+
+### INT8 Linear Quantization
+
+Post-training linear quantization was applied to convert the network parameters from FP32 to INT8 representation.
+
+| Metric               | Value     |
+| -------------------- | --------- |
+| Accuracy             | 92.78%    |
+| Estimated Model Size | ~70.4 MiB |
+
+### Comparison
+
+| Model          | Accuracy | Model Size |
+| -------------- | -------- | ---------- |
+| FP32           | 92.95%   | 281.63 MiB |
+| INT8 Quantized | 92.78%   | ~70.4 MiB  |
+
+### Accuracy and Compression Analysis
+
+* Accuracy degradation after quantization: **0.17%**
+* Approximate model compression ratio: **4×**
+* Significant reduction in storage requirements with negligible loss in classification performance.
+* Demonstrates the effectiveness of post-training linear quantization for deploying CNNs on memory-constrained devices.
+
+### Key Takeaways
+
+* Linear quantization successfully reduced model size while preserving predictive performance.
+* INT8 inference achieved nearly identical accuracy compared to the FP32 baseline.
+* The quantized model is more suitable for edge devices and embedded AI applications where memory efficiency is critical.
+* Results highlight the practical trade-off between numerical precision and deployment efficiency.
 
 ## Results
 
